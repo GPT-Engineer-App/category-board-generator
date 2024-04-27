@@ -1,15 +1,27 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import { Box, SimpleGrid, Image, Text } from "@chakra-ui/react";
+
+const categories = [
+  { name: "Technology", image: "/images/technology.jpg" },
+  { name: "Nature", image: "/images/nature.jpg" },
+  { name: "Food", image: "/images/food.jpg" },
+  { name: "Fashion", image: "/images/fashion.jpg" },
+  { name: "Art", image: "/images/art.jpg" }
+];
 
 const Index = () => {
-  // TODO: Create the website here!
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Box p={5}>
+      <Text fontSize="2xl" fontWeight="bold" mb={4}>Explore Categories</Text>
+      <SimpleGrid columns={3} spacing={10}>
+        {categories.map(category => (
+          <Box key={category.name} boxShadow="md" rounded="lg" overflow="hidden">
+            <Image src={category.image} alt={category.name} />
+            <Text p={2} fontSize="xl" fontWeight="semibold" textAlign="center">{category.name}</Text>
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Box>
+  );
 };
 
 export default Index;
